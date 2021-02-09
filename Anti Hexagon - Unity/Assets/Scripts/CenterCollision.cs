@@ -13,5 +13,9 @@ public class CenterCollision : MonoBehaviour
             Destroy(collision.gameObject);
             onTileCollision.Invoke();
         }
+        if(collision.gameObject.tag == "Wall")
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

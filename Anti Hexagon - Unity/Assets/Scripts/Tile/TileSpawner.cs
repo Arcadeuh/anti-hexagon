@@ -20,7 +20,6 @@ public class TileSpawner : MonoBehaviour
         if (thisTile.tag == "test") { return; }
         
         thisTile.GetComponent<TileGameObject>().setCorridor(transform.parent.gameObject);
-        Debug.Log(thisTile.GetComponent<TileGameObject>().corridor);
         
         float distance = Vector2.Distance(new Vector2(transform.position.x, transform.position.y), Vector2.zero) 
             - centerCollision.GetComponent<CircleCollider2D>().radius * centerCollision.transform.localScale.x;

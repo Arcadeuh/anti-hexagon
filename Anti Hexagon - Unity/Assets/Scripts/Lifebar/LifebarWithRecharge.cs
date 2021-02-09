@@ -7,6 +7,7 @@ public class LifebarWithRecharge : MonoBehaviour
 {
     [SerializeField] private int nbPVMax = 8;
     [SerializeField] private float recoverySpeed = 0.1f;
+    [SerializeField] private ScoreModel score;
     [SerializeField] private UnityEvent whenPVAtZero;
 
     private int nbPV;
@@ -37,6 +38,7 @@ public class LifebarWithRecharge : MonoBehaviour
         if (nbPV == 0) { return; }
         nbPV -= 1;
         transform.localScale = new Vector3(originalScale / nbPVMax * nbPV, transform.localScale.y, transform.localScale.z);
+        score.resetComboVariables();
     }
 
 }

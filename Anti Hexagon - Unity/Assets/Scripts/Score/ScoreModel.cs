@@ -10,13 +10,22 @@ public class ScoreModel : MonoBehaviour
     [SerializeField] private TextDisplay comboDisplay;
     [SerializeField] private ScoreView scoreView;
 
-    // Update is called once per frame
+    // Unity Methods
     void Update()
     {
         scoreDisplay.setTMP(score.ToString());
         comboDisplay.setTMP("X" + multiplier.ToString());
     }
 
+    //~~~~~~Getters~~~~~~
+
+    public int getMultiplier()
+    {
+        return multiplier;
+    }
+
+
+    //~~~~~~Variables manipulation~~~~~~
     public void addScore(int scoreAdded)
     {
         score += scoreAdded * multiplier;
@@ -51,7 +60,6 @@ public class ScoreModel : MonoBehaviour
 
     public void resetComboVariables()
     {
-        Debug.Log("Multiplier and combo reset");
         scoreView.playComboBroken();
         combo = 0;
         multiplier = 1;

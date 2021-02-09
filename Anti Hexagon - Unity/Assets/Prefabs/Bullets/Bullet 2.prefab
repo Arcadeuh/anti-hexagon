@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f46845873cc151747a11f68f91ad0713, type: 3}
   m_Color: {r: 1, g: 0.6666667, b: 0.003921569, a: 1}
   m_FlipX: 0
@@ -148,59 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8432d234919dba94b9756337c083c344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onTileDestroy:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6360535909766706767, guid: 48c29b51a8d8d5d49939a4b753429d82,
-          type: 3}
-        m_MethodName: addOneCombo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6360535909766706767, guid: 48c29b51a8d8d5d49939a4b753429d82,
-          type: 3}
-        m_MethodName: addOneScore
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  noTileDestroy:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6360535909766706767, guid: 48c29b51a8d8d5d49939a4b753429d82,
-          type: 3}
-        m_MethodName: setComboToZero
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: -7630571835316305071}
-        m_MethodName: destroy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &-7630571835316305071
 MonoBehaviour:
   m_ObjectHideFlags: 0
