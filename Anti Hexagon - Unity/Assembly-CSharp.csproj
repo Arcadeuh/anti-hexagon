@@ -72,11 +72,13 @@
     <Compile Include="Assets\Scripts\Generic\Translator.cs" />
     <Compile Include="Assets\Scripts\Lifebar\LifebarView.cs" />
     <Compile Include="Assets\Scripts\Lifebar\LifebarWithRecharge.cs" />
+    <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Scripts\MultiplierFeedback.cs" />
     <Compile Include="Assets\Scripts\NoAxisInput.cs" />
     <Compile Include="Assets\Scripts\NullGameObject.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCollider.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Quit.cs" />
     <Compile Include="Assets\Scripts\Rythm.cs" />
     <Compile Include="Assets\Scripts\Score\ScoreModel.cs" />
     <Compile Include="Assets\Scripts\Score\ScoreView.cs" />

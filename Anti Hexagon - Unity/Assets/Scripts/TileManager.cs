@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class TileManager : MonoBehaviour
 {
-    [SerializeField] private int pulsationsBeforeTilesDestroyed;
+    [SerializeField] private float pulsationsBeforeTilesDestroyed;
     [SerializeField] private List<TileSpawner> spawners;
     [SerializeField] private List<Partition> partitions;
+    [SerializeField] private Partition transitionPartition;
+
+    [SerializeField] private bool enableTransitions = false;
+    [SerializeField] private bool enableRandom = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +20,8 @@ public class TileManager : MonoBehaviour
             part.init();
         }
 
+        transitionPartition.init();
+
         foreach(TileSpawner spawner in spawners)
         {
             spawner.setHeartbeatCountBeforeTileDestroyed(pulsationsBeforeTilesDestroyed);
@@ -24,9 +30,27 @@ public class TileManager : MonoBehaviour
 
     private IEnumerator chargePartition()
     {
+        for(int i=0; i<partitions.Count; i++)
+        {
+            int offset = Mathf.FloorToInt(Random.Range(0.0f, 7.0f));
+            int indexPartition = i;
+            if (enableRandom)
+            {
+                indexPartition = Mathf.FloorToInt(Random.Range(0.0f, partitions.Count - 1));
+            }
+            if (enableTransitions)
+            {
+                loadPartition(transitionPartition, offset);
+            }
+            loadPartition(partitions[indexPartition], offset);
+        }
         foreach(Partition partition in partitions)
         {
             int offset = Mathf.FloorToInt(Random.Range(0.0f, 7.0f));
+            if (enableTransitions)
+            {
+                loadPartition(transitionPartition, offset);
+            }
             loadPartition(partition, offset);
         }
         yield return null;

@@ -4,6 +4,8 @@ public class CorridorView : MonoBehaviour
 {
     [SerializeField] private Color baseColor;
     [SerializeField] private Color alternativeColor;
+    private Color initBaseColor;
+    private Color initAlternativeColor;
 
     private Animator anim;
     private GameObject body;
@@ -14,6 +16,14 @@ public class CorridorView : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         body = transform.Find("Body").gameObject;
+        initBaseColor = baseColor;
+        initAlternativeColor = alternativeColor;
+    }
+
+    public void reinitColor()
+    {
+        baseColor = initBaseColor;
+        alternativeColor = initAlternativeColor;
     }
 
     public void alternateColor()
@@ -27,6 +37,12 @@ public class CorridorView : MonoBehaviour
         {
             body.GetComponent<SpriteRenderer>().color = alternativeColor;
         }
+    }
+
+    public void changeColor(Color newBaseColor, Color newAletrnativeColor)
+    {
+        baseColor = newBaseColor;
+        alternativeColor = newAletrnativeColor;
     }
 
     public void playGoodAnim(int tileType)

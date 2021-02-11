@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class MultiplierFeedback : MonoBehaviour
 {
+    [Header("Data")]
     [SerializeField] private AnimationCurve bumpCurve;
+    [SerializeField] private Color baseCorridorColorMulti2;
+    [SerializeField] private Color alterCorridorColorMulti2;
+
+    [Header("Resources")]
     [SerializeField] private GameObject scoreGameObject;
     [SerializeField] private GameObject centerAnimatedPart;
     [SerializeField] private GameObject caches;
@@ -34,7 +39,6 @@ public class MultiplierFeedback : MonoBehaviour
     {
         currentTime = 0.0f;
         onTimePassed = false;
-        doItOnce = false;
     }
 
     private void Update()
@@ -45,21 +49,28 @@ public class MultiplierFeedback : MonoBehaviour
         {
             scoreGameObject.transform.Find("Combo").localScale = comboScaleInit;
             scoreGameObject.transform.Find("Score").localScale = scoreScaleInit;
-            speedLines.GetComponent<Animator>().ResetTrigger("EnterTrigger");
             centerAnimatedPart.GetComponent<Animator>().Play("Null");
             caches.GetComponent<Animator>().Play("Null");
             speedLines.GetComponent<Animator>().SetBool("EnterTrigger", false);
+            allCorridorsView.reinitColor();
+            doItOnce = false;
         }
 
-        if (multiplier >= 5)
+        if (multiplier >= 5 && !doItOnce)
+        {
+            allCorridorsView.changeColor(baseCorridorColorMulti2, alterCorridorColorMulti2);
+            doItOnce = true;
+        }
+
+        if (multiplier >= 7)
+        {
+            speedLines.GetComponent<Animator>().SetBool("EnterTrigger",true);
+        }
+
+        if (multiplier >= 10)
         {
             centerAnimatedPart.GetComponent<Animator>().Play("Colorful");
             caches.GetComponent<Animator>().Play("Colorful");
-        }
-
-        if (multiplier >= 9)
-        {
-            speedLines.GetComponent<Animator>().SetBool("EnterTrigger",true);
         }
 
         if (!onTimePassed)
@@ -73,22 +84,13 @@ public class MultiplierFeedback : MonoBehaviour
             {
                 float currentBumpValue = bumpCurve.Evaluate(currentTime);
                 centerAnimatedPart.transform.localScale = centerScaleInit * currentBumpValue;
-
-                if(multiplier >= 2)
+                
+                if (multiplier >= 3)
                 {
                     scoreGameObject.transform.Find("Combo").localScale = comboScaleInit * currentBumpValue;
                     scoreGameObject.transform.Find("Score").localScale = scoreScaleInit * currentBumpValue;
                 }
-                if (multiplier >= 3 && !doItOnce)
-                {
-                    allCorridorsView.alternateColor();
-                }
                 
-                if (multiplier >= 10)
-                {
-                    //to complete
-                }
-                doItOnce = true;
             }
         }
         

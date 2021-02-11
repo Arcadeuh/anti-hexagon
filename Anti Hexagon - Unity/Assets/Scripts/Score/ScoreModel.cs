@@ -61,7 +61,7 @@ public class ScoreModel : MonoBehaviour
     public void resetComboVariables()
     {
         scoreView.playComboBroken();
-        combo = 0;
+        combo = Mathf.FloorToInt(combo/2);
         multiplier = 1;
     }
 }
