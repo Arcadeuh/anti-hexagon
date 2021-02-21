@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class ScoreModel : MonoBehaviour
 {
     [SerializeField] private int multiplierDelta = 10;
+    [SerializeField] private int scoreToReach = 4000;
+    [SerializeField] private UnityEvent onScoreReached;
     private int score = 0;
     private int combo = 0;
     private int multiplier = 1;
@@ -15,6 +18,11 @@ public class ScoreModel : MonoBehaviour
     {
         scoreDisplay.setTMP(score.ToString());
         comboDisplay.setTMP("X" + multiplier.ToString());
+
+        if (score >= scoreToReach)
+        {
+            onScoreReached.Invoke();
+        }
     }
 
     //~~~~~~Getters~~~~~~

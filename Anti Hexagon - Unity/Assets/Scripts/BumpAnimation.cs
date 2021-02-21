@@ -5,6 +5,7 @@ using UnityEngine;
 public class BumpAnimation : MonoBehaviour
 {
     [SerializeField] private AnimationCurve bumpCurve;
+    public bool authorizeAnimation = false;
 
     private float stopTime;
     private float currentTime;
@@ -19,6 +20,11 @@ public class BumpAnimation : MonoBehaviour
         scaleInit = transform.localScale;
     }
 
+    public void setAuthorizeAnimation(bool state)
+    {
+        authorizeAnimation = state;
+    }
+
     public void playBump()
     {
         currentTime = 0.0f;
@@ -28,17 +34,20 @@ public class BumpAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!onTimePassed)
+        if (authorizeAnimation)
         {
-            currentTime += Time.deltaTime;
-            if (currentTime > stopTime)
+            if (!onTimePassed)
             {
-                onTimePassed = true;
-            }
-            else
-            {
-                float currentBumpValue = bumpCurve.Evaluate(currentTime);
-                transform.localScale = scaleInit * currentBumpValue;
+                currentTime += Time.deltaTime;
+                if (currentTime > stopTime)
+                {
+                    onTimePassed = true;
+                }
+                else
+                {
+                    float currentBumpValue = bumpCurve.Evaluate(currentTime);
+                    transform.localScale = scaleInit * currentBumpValue;
+                }
             }
         }
     }

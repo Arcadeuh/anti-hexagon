@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Bullet\BulletGameObject.cs" />
     <Compile Include="Assets\Scripts\BumpAnimation.cs" />
     <Compile Include="Assets\Scripts\CenterCollision.cs" />
+    <Compile Include="Assets\Scripts\CheckMarkView.cs" />
     <Compile Include="Assets\Scripts\Corridor\AllCorridorsView.cs" />
     <Compile Include="Assets\Scripts\Corridor\CorridorView.cs" />
     <Compile Include="Assets\Scripts\Generic\Rotator.cs" />

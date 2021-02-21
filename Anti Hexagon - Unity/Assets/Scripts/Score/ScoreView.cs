@@ -8,12 +8,6 @@ public class ScoreView : MonoBehaviour
     [SerializeField] private GameObject score;
     [SerializeField] private GameObject combo;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     public void playComboBroken()
     {
         combo.GetComponent<Animator>().Play("Null");

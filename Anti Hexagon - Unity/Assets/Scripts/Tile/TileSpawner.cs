@@ -43,6 +43,11 @@ public class TileSpawner : MonoBehaviour
         queue.Enqueue(gameObject);
     }
 
+    public void clearQueue()
+    {
+        queue.Clear();
+    }
+
     public void setHeartbeatCountBeforeTileDestroyed(float pulsation)
     {
         pulsationtBeforeTileDestroyed = pulsation;

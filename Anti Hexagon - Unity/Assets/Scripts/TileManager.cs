@@ -67,6 +67,28 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    public void destroyTilesOnScreen()
+    {
+        GameObject[] tilesFound = GameObject.FindGameObjectsWithTag("Tile");
+        foreach(GameObject tile in tilesFound)
+        {
+            Destroy(tile);
+        }
+        tilesFound = GameObject.FindGameObjectsWithTag("Wall");
+        foreach (GameObject tile in tilesFound)
+        {
+            Destroy(tile);
+        }
+    }
+
+    public void clearQueues()
+    {
+        foreach(TileSpawner spawner in spawners)
+        {
+            spawner.clearQueue();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
