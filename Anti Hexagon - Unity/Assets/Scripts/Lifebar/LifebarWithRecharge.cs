@@ -9,6 +9,7 @@ public class LifebarWithRecharge : MonoBehaviour
     [SerializeField] private float recoverySpeed = 0.1f;
     [SerializeField] private ScoreModel score;
     [SerializeField] private UnityEvent whenPVAtZero;
+    [SerializeField] private UnityEvent whenPVRegain;
 
     private int nbPV;
     private float originalScale;
@@ -25,7 +26,7 @@ public class LifebarWithRecharge : MonoBehaviour
         if(nbPV < nbPVMax && nbPV>=0)
         {
             transform.localScale = new Vector3(transform.localScale.x + transform.localScale.x * recoverySpeed * Time.deltaTime, transform.localScale.y, transform.localScale.z);
-            if(transform.localScale.x >= (nbPV+1) * originalScale / nbPVMax) { nbPV++; }
+            if(transform.localScale.x >= (nbPV+1) * originalScale / nbPVMax) { nbPV++; whenPVRegain.Invoke(); }
             if (nbPV == 0)
             {
                 whenPVAtZero.Invoke();

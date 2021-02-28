@@ -13,14 +13,17 @@ public class ScoreModel : MonoBehaviour
     [SerializeField] private TextDisplay comboDisplay;
     [SerializeField] private ScoreView scoreView;
 
+    private bool doItOnce = false;
+
     // Unity Methods
     void Update()
     {
         scoreDisplay.setTMP(score.ToString());
         comboDisplay.setTMP("X" + multiplier.ToString());
 
-        if (score >= scoreToReach)
+        if (score >= scoreToReach && !doItOnce)
         {
+            doItOnce = true;
             onScoreReached.Invoke();
         }
     }

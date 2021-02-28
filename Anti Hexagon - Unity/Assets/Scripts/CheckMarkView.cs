@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CheckMarkView : MonoBehaviour
 {
-    [SerializeField] private GameObject particles;
+    [SerializeField] private GameObject victoryparticles;
 
     void SetParticlesEnable()
     {
-        particles.SetActive(true);
+        victoryparticles.SetActive(true);
     }
 }
