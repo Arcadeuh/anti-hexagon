@@ -60,6 +60,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+  offset: 1
   difficulty: 3
   containingWall: 0
   nbColors: 1

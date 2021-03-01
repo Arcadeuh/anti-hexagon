@@ -87,6 +87,7 @@ MonoBehaviour:
     - {fileID: 1108087997728079957, guid: ca92c4503cfea094db8c2feaa749d69e, type: 3}
     - {fileID: 1108087997728079957, guid: ca92c4503cfea094db8c2feaa749d69e, type: 3}
     - {fileID: 1108087997728079957, guid: ca92c4503cfea094db8c2feaa749d69e, type: 3}
+  offset: 3
   difficulty: 1
   containingWall: 0
   nbColors: 1

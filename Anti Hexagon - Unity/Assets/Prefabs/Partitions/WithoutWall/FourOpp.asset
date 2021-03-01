@@ -51,6 +51,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 8053952893214207018, guid: ea50ec10c71edd74caec3ce3e12b0acd, type: 3}
     - {fileID: 0}
+  offset: 2
   difficulty: 1
   containingWall: 0
   nbColors: 1

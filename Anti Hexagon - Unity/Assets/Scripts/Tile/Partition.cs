@@ -7,9 +7,11 @@ public class Partition : ScriptableObject
 {
     public GameObject fillingGameObject;
     public List<Accord> listAccords;
+    public OffsetType offset = OffsetType.None;
     [Range(1, 5)] public int difficulty = 3;
     public bool containingWall = false;
     [Range(0, 4)] public int nbColors = 1;
+    
 
     public void init()
     {
@@ -29,6 +31,15 @@ public class Partition : ScriptableObject
             }
         }
     }
+}
+
+[System.Serializable]
+public enum OffsetType
+{
+    None = 1,
+    Demi = 2,
+    Quart = 4,
+    Huitieme = 8
 }
 
 [System.Serializable]

@@ -40,18 +40,18 @@ public class TileManager : MonoBehaviour
                 indexPartition = Mathf.FloorToInt(Random.Range(0.0f, partitions.Count - 1));
             }
             if (partitions[indexPartition].containingWall && !withWall) { continue; }
-
-            int offset = 0;
+            
             if (enableOffset)
             {
-                offset = Mathf.FloorToInt(Random.Range(0.0f, 3.0f)) * 2;
+                int offset = (int)partitions[indexPartition].offset;
+                indexPartition = 8/offset * (Mathf.FloorToInt(Random.Range(0.0f, 7.0f))%offset);
             }
 
             if (enableTransitions)
             {
-                loadPartition(transitionPartition, offset);
+                loadPartition(transitionPartition);
             }
-            loadPartition(partitions[indexPartition], offset);
+            loadPartition(partitions[indexPartition]);
         }
         yield return null;
     }
@@ -63,6 +63,17 @@ public class TileManager : MonoBehaviour
             for (int i = 0; i < 8; i++)
             {
                 spawners[(i + offset) % 8].addToQueue(accord.notes[i]);
+            }
+        }
+    }
+
+    private void loadPartition(Partition partition)
+    {
+        foreach (Accord accord in partition.listAccords)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                spawners[i % 8].addToQueue(accord.notes[i]);
             }
         }
     }
