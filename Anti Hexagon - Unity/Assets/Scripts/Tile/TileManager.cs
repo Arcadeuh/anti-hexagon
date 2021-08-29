@@ -12,7 +12,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] private bool enableTransitions = false;
     [SerializeField] private bool enableRandom = false;
     [SerializeField] private bool enableOffset = false;
-    [SerializeField] private bool withWall = true;
+    [SerializeField] private bool enableWall = true;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +30,15 @@ public class TileManager : MonoBehaviour
         }
     }
 
+
+    public void setVariables(bool transition, bool random, bool offset, bool wall)
+    {
+        enableTransitions = transition;
+        enableRandom = random;
+        enableOffset = offset;
+        enableWall = wall;
+    }
+
     private IEnumerator chargePartition()
     {
         for(int i=0; i<partitions.Count; i++)
@@ -37,37 +46,57 @@ public class TileManager : MonoBehaviour
             int indexPartition = i;
             if (enableRandom)
             {
-                indexPartition = Mathf.FloorToInt(Random.Range(0.0f, partitions.Count - 1));
+                indexPartition = Mathf.FloorToInt(Random.Range(0.0f, partitions.Count-0.01f));
             }
-            if (partitions[indexPartition].containingWall && !withWall) { continue; }
-            
+            if (partitions[indexPartition].containingWall && !enableWall) { continue; }
+
+            int offset = 0;
             if (enableOffset)
             {
-                int offset = (int)partitions[indexPartition].offset;
-                indexPartition = 8/offset * (Mathf.FloorToInt(Random.Range(0.0f, 7.0f))%offset);
+                offset = (int)partitions[indexPartition].offset;
+                offset = 8/offset * (Mathf.FloorToInt(Random.Range(0.0f, 7.99f))%offset) % 8;
             }
 
             if (enableTransitions)
             {
                 loadPartition(transitionPartition);
             }
-            loadPartition(partitions[indexPartition]);
+            loadPartition(partitions[indexPartition], offset);
         }
         yield return null;
     }
 
-    private void loadPartition(Partition partition, int offset)
+    public void loadPartition(Partition partition, int offset)
     {
-        foreach (Accord accord in partition.listAccords)
+        int reverse = 0;
+        if (partition.reversable)
         {
-            for (int i = 0; i < 8; i++)
+            reverse = Mathf.FloorToInt(Random.Range(0.0f, 1.9999f));
+        }
+        if (reverse == 0)
+        {
+            for (int i = 0; i<partition.listAccords.Count; i++)
             {
-                spawners[(i + offset) % 8].addToQueue(accord.notes[i]);
+                for (int j = 0; j < 8; j++)
+                {
+                    spawners[(j + offset) % 8].addToQueue(partition.listAccords[i].notes[j]);
+                }
             }
         }
+        else
+        {
+            for (int i = partition.listAccords.Count-1; i >= 0; i--)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    spawners[(j + offset) % 8].addToQueue(partition.listAccords[i].notes[j]);
+                }
+            }
+        }
+        
     }
 
-    private void loadPartition(Partition partition)
+    public void loadPartition(Partition partition)
     {
         foreach (Accord accord in partition.listAccords)
         {
@@ -100,9 +129,23 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    public void subSpeed(float speedSubstracted)
+    {
+        pulsationsBeforeTilesDestroyed -= speedSubstracted;
+        this.updateSpeed();
+    }
+
+    public void updateSpeed()
+    {
+        foreach (TileSpawner spawner in spawners)
+        {
+            spawner.setHeartbeatCountBeforeTileDestroyed(pulsationsBeforeTilesDestroyed);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(spawners[0].queue.Count == 0) { StartCoroutine("chargePartition"); }
+        if (spawners[0].queue.Count == 0) { StartCoroutine("chargePartition"); }
     }
 }

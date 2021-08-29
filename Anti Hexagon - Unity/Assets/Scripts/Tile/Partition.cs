@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="New Partition", menuName ="Partition")]
@@ -10,6 +9,7 @@ public class Partition : ScriptableObject
     public OffsetType offset = OffsetType.None;
     [Range(1, 5)] public int difficulty = 3;
     public bool containingWall = false;
+    public bool reversable = false;
     [Range(0, 4)] public int nbColors = 1;
     
 

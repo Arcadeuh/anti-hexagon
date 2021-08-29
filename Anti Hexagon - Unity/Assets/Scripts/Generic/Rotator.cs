@@ -16,5 +16,6 @@ public class Rotator : MonoBehaviour
     void Update()
     {
         transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+        Vector3 angles = transform.rotation.eulerAngles;
     }
 }

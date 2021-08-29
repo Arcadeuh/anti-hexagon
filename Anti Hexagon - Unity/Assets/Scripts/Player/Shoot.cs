@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Shoot : MonoBehaviour
 {
     [SerializeField] private List<GameObject> bullets;
     [SerializeField] private float cadence;
+    [SerializeField] private UnityEvent onShoot;
     private bool allowToShoot = true;
+    [SerializeField] private bool allowSecondShoot = false;
 
     private IEnumerator WaitNextShot()
     {
@@ -22,14 +25,20 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if ((Input.GetKey(KeyCode.G) || Input.GetButton("Fire1")) && allowToShoot)
+        if ((Input.GetKey(KeyCode.F) || Input.GetButton("Fire1")) && allowToShoot)
         {
+            onShoot.Invoke();
             shoot(bullets[0]);
         }
-        if ((Input.GetKey(KeyCode.F) || Input.GetButton("Fire2")) && allowToShoot)
+        else if ((Input.GetKey(KeyCode.D) || Input.GetButton("Jump")) && allowToShoot && allowSecondShoot)
         {
             shoot(bullets[1]);
         }
+        else if(!(Input.GetKey(KeyCode.F) || Input.GetButton("Jump") || Input.GetKey(KeyCode.F) || Input.GetButton("Fire1")))
+        {
+            allowToShoot = true;
+        }
+        /*
         if ((Input.GetKey(KeyCode.D) || Input.GetButton("Fire3")) && allowToShoot)
         {
             shoot(bullets[2]);
@@ -38,13 +47,19 @@ public class Shoot : MonoBehaviour
         {
             shoot(bullets[3]);
         }
-        
+        */
+
     }
 
-    private void shoot(GameObject bullet)
+    public void shoot(GameObject bullet)
     {
         Instantiate(bullet, transform.position, transform.rotation);
         allowToShoot = false;
-        StartCoroutine("WaitNextShot");
+    }
+
+    public void shootAuto()
+    {
+        Instantiate(bullets[0], transform.position, transform.rotation);
+        allowToShoot = false;
     }
 }

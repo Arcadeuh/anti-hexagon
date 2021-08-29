@@ -5,93 +5,80 @@ using UnityEngine;
 public class MultiplierFeedback : MonoBehaviour
 {
     [Header("Data")]
-    [SerializeField] private AnimationCurve bumpCurve;
-    [SerializeField] private Color baseCorridorColorMulti2;
-    [SerializeField] private Color alterCorridorColorMulti2;
+    [SerializeField] private Color baseColor1;
+    [SerializeField] private Color alterColor1;
+    [SerializeField] private Color baseColor2;
+    [SerializeField] private Color alterColor2;
+    [SerializeField] private Color baseColor3;
+    [SerializeField] private Color alterColor3;
+    [SerializeField] private Color baseColor4;
+    [SerializeField] private Color alterColor4;
 
     [Header("Resources")]
     [SerializeField] private GameObject scoreGameObject;
     [SerializeField] private GameObject centerAnimatedPart;
     [SerializeField] private GameObject caches;
     [SerializeField] private AllCorridorsView allCorridorsView;
-    [SerializeField] private GameObject speedLines;
+    [SerializeField] private Animator speedLines;
+    //[SerializeField] private GameObject shockwaveParent;
 
-    private float stopTime;
-    private float currentTime;
-    private bool onTimePassed = false;
-    private bool doItOnce = false;
+    private List<bool> multiplierFlags = new List<bool>();
 
-    private Vector3 comboScaleInit;
-    private Vector3 scoreScaleInit;
-    private Vector3 centerScaleInit;
+    public void resetFlags()
+    {
+        for (int i = 0; i < multiplierFlags.Count; i++)
+        {
+            multiplierFlags[i] = false;
+        }
+    }
 
     private void Start()
     {
-        stopTime = bumpCurve[bumpCurve.length - 1].time;
-        currentTime = stopTime + 1;
-
-        comboScaleInit = scoreGameObject.transform.Find("Combo").localScale;
-        scoreScaleInit = scoreGameObject.transform.Find("Score").localScale;
-        centerScaleInit = centerAnimatedPart.transform.localScale;
-    }
-
-    public void playBump()
-    {
-        currentTime = 0.0f;
-        onTimePassed = false;
+        for (int i = 0; i < 6; i++)
+        {
+            multiplierFlags.Add(false);
+        }
     }
 
     private void Update()
     {
         int multiplier = scoreGameObject.GetComponent<ScoreModel>().getMultiplier();
+        caches.GetComponent<Animator>().SetInteger("Multiplier", multiplier);
+        Debug.Log(caches.GetComponent<Animator>().GetInteger("Multiplier"));
 
         if (multiplier == 1)
         {
-            scoreGameObject.transform.Find("Combo").localScale = comboScaleInit;
-            scoreGameObject.transform.Find("Score").localScale = scoreScaleInit;
             centerAnimatedPart.GetComponent<Animator>().Play("Null");
-            caches.GetComponent<Animator>().Play("Null");
-            speedLines.GetComponent<Animator>().SetBool("EnterTrigger", false);
+            //caches.GetComponent<Animator>().Play("Null");
             allCorridorsView.reinitColor();
-            doItOnce = false;
+            speedLines.SetBool("EnterTrigger", false);
+            resetFlags();
         }
 
-        if (multiplier >= 5 && !doItOnce)
+        if (multiplier >= 2 && !multiplierFlags[0])
         {
-            allCorridorsView.changeColor(baseCorridorColorMulti2, alterCorridorColorMulti2);
-            doItOnce = true;
+            allCorridorsView.changeColor(alterColor1, baseColor1);
+            multiplierFlags[0] = true;
         }
 
-        if (multiplier >= 7)
+        if (multiplier >= 4 && !multiplierFlags[1])
         {
-            speedLines.GetComponent<Animator>().SetBool("EnterTrigger",true);
+            allCorridorsView.changeColor(alterColor2, baseColor2);
+            multiplierFlags[1] = true;
         }
 
-        if (multiplier >= 10)
+        if (multiplier >= 6 && !multiplierFlags[2])
         {
+            allCorridorsView.changeColor(alterColor3, baseColor3);
+            multiplierFlags[2] = true;
+        }
+
+        if (multiplier >= 8 && !multiplierFlags[3])
+        {
+            allCorridorsView.changeColor(alterColor4, baseColor4);
+            multiplierFlags[3] = true;
+            speedLines.SetBool("EnterTrigger", true);
             centerAnimatedPart.GetComponent<Animator>().Play("Colorful");
-            caches.GetComponent<Animator>().Play("Colorful");
-        }
-
-        if (!onTimePassed)
-        {
-            currentTime += Time.deltaTime;
-            if (currentTime > stopTime)
-            {
-                onTimePassed = true;
-            }
-            else
-            {
-                float currentBumpValue = bumpCurve.Evaluate(currentTime);
-                centerAnimatedPart.transform.localScale = centerScaleInit * currentBumpValue;
-                
-                if (multiplier >= 3)
-                {
-                    scoreGameObject.transform.Find("Combo").localScale = comboScaleInit * currentBumpValue;
-                    scoreGameObject.transform.Find("Score").localScale = scoreScaleInit * currentBumpValue;
-                }
-                
-            }
         }
         
     }

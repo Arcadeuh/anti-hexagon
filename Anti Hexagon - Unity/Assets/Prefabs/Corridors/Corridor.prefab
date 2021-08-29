@@ -47,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -144,6 +145,7 @@ SpriteMask:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -174,7 +176,7 @@ SpriteMask:
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0
   m_BackSortingLayer: 0
-  m_FrontSortingOrder: 0
+  m_FrontSortingOrder: 10
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
@@ -249,8 +251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28762b32f8699a4d8eab105a93647a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseColor: {r: 0.45882356, g: 0.45882356, b: 0.45882356, a: 1}
-  alternativeColor: {r: 0.3647059, g: 0.36862746, b: 0.3647059, a: 1}
+  baseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  alternativeColor: {r: 0.6, g: 0.6, b: 0.6, a: 1}
 --- !u!1 &1101986778130850839
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +325,10 @@ EdgeCollider2D:
   m_Points:
   - {x: 3.9926918, y: 4.791385}
   - {x: 0.01579922, y: -4.806584}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!114 &5275368984675384871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,6 +413,10 @@ EdgeCollider2D:
   m_Points:
   - {x: -3.979831, y: 4.800327}
   - {x: -0.0042458177, y: -4.805248}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!114 &7579967253739793837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,6 +475,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -546,6 +557,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -627,6 +639,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

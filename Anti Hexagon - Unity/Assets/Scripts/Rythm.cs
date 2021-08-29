@@ -17,6 +17,11 @@ public class Rythm : MonoBehaviour
         coroutineLaunched = false;
     }
 
+    public void setActive(bool value)
+    {
+        gameObject.GetComponent<Rythm>().setActive(value);
+    }
+
     // Update is called once per frame
     void Update()
     {

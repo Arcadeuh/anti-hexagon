@@ -11,6 +11,8 @@ TagManager:
   - BulletLimit
   - HitPlayer
   - Wall
+  - TileMenu
+  - BestscoreTile
   layers:
   - Default
   - TransparentFX

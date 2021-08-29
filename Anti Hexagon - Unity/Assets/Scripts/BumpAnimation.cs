@@ -29,7 +29,6 @@ public class BumpAnimation : MonoBehaviour
     {
         currentTime = 0.0f;
         onTimePassed = false;
-        Debug.Log("HERE");
     }
 
     // Update is called once per frame
@@ -37,7 +36,6 @@ public class BumpAnimation : MonoBehaviour
     {
         if (authorizeAnimation)
         {
-            Debug.Log("Before : "+transform.localScale);
             if (!onTimePassed)
             {
                 currentTime += Time.deltaTime;
@@ -49,8 +47,6 @@ public class BumpAnimation : MonoBehaviour
                 {
                     float currentBumpValue = bumpCurve.Evaluate(currentTime);
                     transform.localScale = scaleInit * currentBumpValue;
-                    Debug.Log("currentBumpValue : " + currentBumpValue);
-                    Debug.Log("After : " + transform.localScale);
                 }
             }
         }
