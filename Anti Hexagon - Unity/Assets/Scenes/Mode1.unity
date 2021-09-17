@@ -9080,21 +9080,21 @@ MonoBehaviour:
   - {fileID: 489396981}
   - {fileID: 125934432}
   partitions:
-  - {fileID: 11400000, guid: df3f102b725e1f44a82b1448f2166909, type: 2}
-  - {fileID: 11400000, guid: 00cc49bce45262241a9df03523fa6857, type: 2}
-  - {fileID: 11400000, guid: 80726c95f38b281428f61a40406e8b79, type: 2}
+  - {fileID: 11400000, guid: 3c4913037d6ff5a4caff83cd571fa24a, type: 2}
+  - {fileID: 11400000, guid: e6d2330dc034e2848b66a29ede934fbc, type: 2}
+  - {fileID: 11400000, guid: 9a5b5fe34100e834f876531553d25dcb, type: 2}
+  - {fileID: 11400000, guid: c34cc4ca785780f4fbe6ab81a763cd41, type: 2}
   - {fileID: 11400000, guid: e77fef6c8fb23d44e86d5da5244dd12c, type: 2}
   - {fileID: 11400000, guid: 8319da33d604cb1409f1b8028296008c, type: 2}
-  - {fileID: 11400000, guid: e6d2330dc034e2848b66a29ede934fbc, type: 2}
-  - {fileID: 11400000, guid: 96e42797817563845911fcfbfa4b3c66, type: 2}
-  - {fileID: 11400000, guid: 818acf37dde37304085db9dfaf48ed65, type: 2}
-  - {fileID: 11400000, guid: c34cc4ca785780f4fbe6ab81a763cd41, type: 2}
-  - {fileID: 11400000, guid: 9a5b5fe34100e834f876531553d25dcb, type: 2}
-  - {fileID: 11400000, guid: 31b44d2de48f7c44ea761018bf016074, type: 2}
-  - {fileID: 11400000, guid: b4b398658365b2e4b82b8ba9aa659377, type: 2}
-  - {fileID: 11400000, guid: 3c4913037d6ff5a4caff83cd571fa24a, type: 2}
   - {fileID: 11400000, guid: 05777f4d60a3d0149ab7fc2891c00503, type: 2}
   - {fileID: 11400000, guid: db4f9eb60808df346ad76f692e5b3ad1, type: 2}
+  - {fileID: 11400000, guid: 96e42797817563845911fcfbfa4b3c66, type: 2}
+  - {fileID: 11400000, guid: 818acf37dde37304085db9dfaf48ed65, type: 2}
+  - {fileID: 11400000, guid: df3f102b725e1f44a82b1448f2166909, type: 2}
+  - {fileID: 11400000, guid: b4b398658365b2e4b82b8ba9aa659377, type: 2}
+  - {fileID: 11400000, guid: 80726c95f38b281428f61a40406e8b79, type: 2}
+  - {fileID: 11400000, guid: 00cc49bce45262241a9df03523fa6857, type: 2}
+  - {fileID: 11400000, guid: 31b44d2de48f7c44ea761018bf016074, type: 2}
   - {fileID: 11400000, guid: c2f471b942bb5f747a75d5cfabf91e93, type: 2}
   transitionPartition: {fileID: 11400000, guid: 68c641cf5a05b4945abba8f5717024f3,
     type: 2}
@@ -9552,6 +9552,7 @@ MonoBehaviour:
   multiplierDelta: 8
   maxMultiplier: 8
   scoreDeltaSpeedup: 1000
+  mode: 1
   onScoreReached:
     m_PersistentCalls:
       m_Calls:

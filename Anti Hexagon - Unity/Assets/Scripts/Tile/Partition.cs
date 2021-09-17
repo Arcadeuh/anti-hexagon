@@ -10,6 +10,8 @@ public class Partition : ScriptableObject
     [Range(1, 5)] public int difficulty = 3;
     public bool containingWall = false;
     public bool reversable = false;
+    [TextArea]
+    public string description = "";
     [Range(0, 4)] public int nbColors = 1;
     
 

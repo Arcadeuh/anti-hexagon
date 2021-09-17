@@ -48,6 +48,7 @@ public class TileManager : MonoBehaviour
             {
                 indexPartition = Mathf.FloorToInt(Random.Range(0.0f, partitions.Count-0.01f));
             }
+            Debug.Log(indexPartition);
             if (partitions[indexPartition].containingWall && !enableWall) { continue; }
 
             int offset = 0;

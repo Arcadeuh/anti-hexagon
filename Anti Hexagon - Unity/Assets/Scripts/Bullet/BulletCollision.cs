@@ -38,6 +38,7 @@ public class BulletCollision : MonoBehaviour
                 if (score)
                 {
                     score.resetComboVariables();
+                    miss.Play();
                 }
                 Destroy(gameObject);
             }

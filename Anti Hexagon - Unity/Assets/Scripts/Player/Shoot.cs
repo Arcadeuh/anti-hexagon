@@ -34,7 +34,7 @@ public class Shoot : MonoBehaviour
         {
             shoot(bullets[1]);
         }
-        else if(!(Input.GetKey(KeyCode.F) || Input.GetButton("Jump") || Input.GetKey(KeyCode.F) || Input.GetButton("Fire1")))
+        else if(!(Input.GetKey(KeyCode.F) || Input.GetButton("Jump") || Input.GetKey(KeyCode.D) || Input.GetButton("Fire1")))
         {
             allowToShoot = true;
         }
